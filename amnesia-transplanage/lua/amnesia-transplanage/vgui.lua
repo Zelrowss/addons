@@ -34,9 +34,13 @@ function PANEL:ShowDestinationList
         surface.SetDrawColor(transplanage.cfg.destinationListColor)
         surface.DrawRect(0, 0, w, h)
     end    
-    
-
-
+    for _, item in ipairs(transplanage.cfg.locations)
+        local listItem = vgui.Create("DButton", self)
+        //item.name, item.location
+        listItem:SetRSize(self:GetWide(), 30)
+        listItem:Dock(TOP)
+        listItem:RDockMargin(0, 5, 0, 5)
+    end
 
 end
 vgui.Register("ATransplanageTeleportPanel", PANEL, "DFrame")
