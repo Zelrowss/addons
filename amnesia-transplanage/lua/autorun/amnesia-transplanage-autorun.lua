@@ -6,7 +6,7 @@ if SERVER then
     include("amnesia-transplanage/net/server.lua")
     include("amnesia-transplanage/function.lua")
 
-    AddCSLuaFile("amensia-transplanage(configuration/configuration.lua")
+    AddCSLuaFile("amensia-transplanage-configuration/configuration.lua")
     AddCSLuaFile("amnesia-transplanage/net/client.lua")
     AddCSLuaFile("amnesia-transplanage/vgui.lua")
 
