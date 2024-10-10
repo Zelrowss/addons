@@ -1,7 +1,8 @@
 print("test")
 
-local mainPanelBackgroundMat = Material("amnesia-transplanage/background.jpg")
-local mainPanelFrameTexture = Material("panels/frame.png")
+local mainPanelBackgroundMat = transplanage.cfg.panelBackgroundMat
+local mainPanelFrameTexture = transplanage.cfg.panelFrameTexture
+local buttonBackgroundTexture = transplanage.cfg.buttonBackgroundTexture
 
 local PANEL = {}
 
@@ -25,7 +26,7 @@ function PANEL:Paint()
 
 end
 
-function PANEL:ShowDestinationList
+function PANEL:ShowDestinationList()
     local destinationList = vgui.Create("DScrollPanel", self)
     destinationList:SetRSize(self:GetWide()*.5, self:GetTall())
     destinationList:Dock(LEFT)
@@ -34,8 +35,20 @@ function PANEL:ShowDestinationList
         surface.SetDrawColor(transplanage.cfg.destinationListColor)
         surface.DrawRect(0, 0, w, h)
     end    
-    
+    for _, item in ipairs(transplanage.cfg.locations)
+        local listItem = vgui.Create("DButton", self)
+        //item.name, item.location
+        listItem:SetRSize(self:GetWide(), 30)
+        listItem:Dock(TOP)
+        listItem:RDockMargin(0, 5, 0, 5)
+        listItem:SetText(item.name)
+        listItem:SetTextColor(color_white)
+        -- listItem:SetFont(transplanage.cfg.buttonFont)
 
+        function listItem:Paint()
+            surface.SetMaterial
+        end
+    end
 
 
 end
