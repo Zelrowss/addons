@@ -1,7 +1,7 @@
-hook.Add("ShutDown", "ZLibDeleteTempFile", function()
-    if not file.Exists("zlib/", "DATA") then return end
+hook.Add("ShutDown", "amnesiaDeleteTempFile", function()
+    if not file.Exists("amnesia/", "DATA") then return end
 
-	file.Delete("zlib/", "DATA")
+	file.Delete("amnesia/", "DATA")
 end)
 
 function surface.DrawFCircle(x, y, radius, angle_start, angle_end, color)
@@ -90,14 +90,14 @@ function surface.DrawImgurRect(imageURL, w, h)
 
     local fileName = imageURL:match(".*/(.*)$")
 
-	if not file.Exists("zlib/icons/" .. fileName, "DATA") then
+	if not file.Exists("amnesia/icons/" .. fileName, "DATA") then
 		http.Fetch(imageURL,
 			function(body, size, headers, code)
-				if not file.Exists("zlib/icons/", "DATA") then
-					file.CreateDir("zlib/icons/")
+				if not file.Exists("amnesia/icons/", "DATA") then
+					file.CreateDir("amnesia/icons/")
 				end
 
-				file.Write("zlib/icons/" .. fileName, body)
+				file.Write("amnesia/icons/" .. fileName, body)
 				return false
 			end,
 			function(error)
@@ -107,7 +107,7 @@ function surface.DrawImgurRect(imageURL, w, h)
 	end
 
 	surface.SetDrawColor(color_white)
-	surface.SetMaterial(Material("../data/zlib/icons/" .. string.lower(fileName)))
+	surface.SetMaterial(Material("../data/amnesia/icons/" .. string.lower(fileName)))
 	surface.DrawTexturedRect(0, 0, w, h)
 end
 
@@ -119,17 +119,17 @@ function surface.DrawGradient(w, h, col, inverse)
 end
 
 function surface.DrawPlayerAvatar(ply, w, h)
-    if not file.Exists("zlib/playerIcons/" .. ply:SteamID64(), "DATA") then
+    if not file.Exists("amnesia/playerIcons/" .. ply:SteamID64(), "DATA") then
         http.Fetch("http://steamcommunity.com/profiles/" .. ply:SteamID64() .. "?xml=1", 
             function(body)
                 local avatarURL = string.match(body, "<avatarFull><!%[CDATA%[(.-)%]%]></avatarFull>")
                 http.Fetch(avatarURL,
                     function(body, len, headers, code)
-                        if not file.Exists("zlib/playerIcons/", "DATA") then
-                            file.CreateDir("zlib/playerIcons/")
+                        if not file.Exists("amnesia/playerIcons/", "DATA") then
+                            file.CreateDir("amnesia/playerIcons/")
                         end
 
-                        file.Write("zlib/playerIcons/" .. ply:SteamID64() .. ".png", body)
+                        file.Write("amnesia/playerIcons/" .. ply:SteamID64() .. ".png", body)
                         return false
                     end,
                     function(error)
@@ -143,7 +143,7 @@ function surface.DrawPlayerAvatar(ply, w, h)
         )
     end
 
-    surface.SetMaterial(Material("../data/zlib/playerIcons/" .. ply:SteamID64() .. ".png"))
+    surface.SetMaterial(Material("../data/amnesia/playerIcons/" .. ply:SteamID64() .. ".png"))
     surface.SetDrawColor(color_white)
     surface.DrawTexturedRect(0, 0, w, h)
 end
