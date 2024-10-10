@@ -1,4 +1,4 @@
-amnesia-transplanage = amnesia transplanage or {}
+transplanage = transplanage or {}
 
 if SERVER then
     include("amensia-transplanage-configuration/configuration.lua")
