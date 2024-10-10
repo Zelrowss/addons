@@ -6,25 +6,26 @@ if SERVER then
     include("core/server/server.lua")
     include("core/shared/shared.lua")
     include("core/shared/colors.lua")
+    include("core/shared/materials.lua")
 
     AddCSLuaFile("core/shared/shared.lua")
     AddCSLuaFile("core/shared/colors.lua")
+    AddCSLuaFile("core/shared/materials.lua")
     AddCSLuaFile("core/client/client.lua")
     AddCSLuaFile("core/client/draw.lua")
     AddCSLuaFile("core/client/panel.lua")
     AddCSLuaFile("core/client/surface.lua")
     AddCSLuaFile("core/client/utils.lua")
-    AddCSLuaFile("core/client/materials.lua")
     
 else
     include("core/shared/shared.lua")
     include("core/shared/colors.lua")
+    include("core/shared/materials.lua")
     include("core/client/client.lua")
     include("core/client/draw.lua")
     include("core/client/panel.lua")
     include("core/client/surface.lua")
     include("core/client/utils.lua")
-    include("core/client/materials.lua")
 end
 
 

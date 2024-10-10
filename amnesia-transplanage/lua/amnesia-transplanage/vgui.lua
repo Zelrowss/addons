@@ -35,7 +35,7 @@ function PANEL:ShowDestinationList()
         surface.SetDrawColor(transplanage.cfg.destinationListColor)
         surface.DrawRect(0, 0, w, h)
     end    
-    for _, item in ipairs(transplanage.cfg.locations)
+    for _, item in ipairs(transplanage.cfg.locations) do
         local listItem = vgui.Create("DButton", self)
         //item.name, item.location
         listItem:SetRSize(self:GetWide(), 30)
@@ -47,7 +47,7 @@ function PANEL:ShowDestinationList()
         
 
         function listItem:Paint()
-            surface.SetMaterial
+
         end
     end
 
