@@ -11,6 +11,6 @@ cfg.locations = {
     {name = "exemple 1", location = Vector(0,0,0)},
 }
 
-cfg.panelBackgroundMat = amnesia.mat.panelBackground
-cfg.panelFrameTexture = amnesia.mat.panelFrame
-cfg.buttonBackgroundTexture = amnesia.mat.buttonBackground
+cfg.panelBackgroundMat = amnesia.mat.backgroundMat
+cfg.panelFrameTexture = amnesia.mat.frameMat
+cfg.buttonBackgroundTexture = amnesia.mat.buttonMat
