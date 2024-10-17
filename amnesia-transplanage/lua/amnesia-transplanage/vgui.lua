@@ -5,7 +5,7 @@ local mainPanelFrameTexture = transplanage.cfg.panelFrameTexture
 local buttonBackgroundTexture = transplanage.cfg.buttonBackgroundTexture
 
 local PANEL = {}
-
+ 
 function PANEL:Init()
     self:SetSize(ScrW() * .8, ScrH() * .8)
     self:SetTitle("")
@@ -43,6 +43,12 @@ function PANEL:ShowDestinationList()
         listItem:RDockMargin(0, 5, 0, 5)
         listItem:SetText(item.name)
         listItem:SetTextColor(color_white)
+        function listItem:DoClick()
+            net.Start("transplanage_start_teleportation")
+                net.WriteString(item.name)
+            net.SendToServer()
+            PANEL:Close()
+        end
         -- listItem:SetFont(transplanage.cfg.buttonFont)
         
 

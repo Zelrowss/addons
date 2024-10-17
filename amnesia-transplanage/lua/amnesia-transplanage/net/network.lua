@@ -1,1 +1,1 @@
-util.AddNetworkString("ATransplanageTransplanageRecentDamageCheck")
+util.AddNetworkString("transplanage_start_teleportation")
