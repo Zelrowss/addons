@@ -1,8 +1,8 @@
 hook.Add("PlayerInitialSpawn", "AmnesiaRPInitPlayersVars", function(ply)
     if not IsValid(ply) or not ply:IsPlayer() then return end
-    local data = amnesia:LoadPlayerData(ply)
+    local data = amnesia:LoadPlayerData(ply) or {}
 
-    ply.amnesia.binds = data.binds or {}
+    ply.amnesia = data or {}
 
 end)
 

@@ -8,6 +8,9 @@ if SERVER then
     include("core/shared/colors.lua")
     include("core/shared/materials.lua")
 
+    resource.AddFile("resource/fonts/HybridMedium.ttf")
+    resource.AddFile("resource/fonts/OPTIColumna-Solid.otf")
+
     AddCSLuaFile("core/shared/shared.lua")
     AddCSLuaFile("core/shared/colors.lua")
     AddCSLuaFile("core/shared/materials.lua")

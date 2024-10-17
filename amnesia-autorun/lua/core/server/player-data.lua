@@ -3,7 +3,7 @@ sql.Query("CREATE TABLE IF NOT EXISTS amnesia_players_binds (STEAMID TEXT, binds
 function amnesia:SavePlayerData(ply)
     local bindsJSON = util.TableToJSON(ply.amnesia.binds)
 
-    local existingData = sql.SQLStr("SELECT * FROM amnesia_players_binds WHERE STEAMID = " .. sql.SQLStr(ply:SteamID()) .. ";")
+    local existingData = sql.Query("SELECT * FROM amnesia_players_binds WHERE STEAMID = " .. sql.SQLStr(ply:SteamID()) .. ";")
 
     if existingData then
         sql.Query("UPDATE amnesia_players_binds SET binds = " .. sql.SQLStr(bindsJSON) .. " WHERE STEAMID = " .. sql.SQLStr(ply:SteamID()) .. ";")
