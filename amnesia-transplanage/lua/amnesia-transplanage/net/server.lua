@@ -4,7 +4,7 @@ net.Receive("transplanage_start_teleportation", function(_, ply)
     if not transplanage.cfg.allowedJobs[team.GetName(ply:Team())] then return end
 
 
-    local localization = net.ReadString()
-
+    local localization = net.ReadVector()
+    ply:SetPos(localization)
 
 end)

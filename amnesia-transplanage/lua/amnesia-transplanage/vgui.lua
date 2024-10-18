@@ -19,6 +19,7 @@ function PANEL:Init()
     self:SetTitle("")
     self:SetDraggable(false)
     self:Center()
+    self:ShowDestinationList()
     self:MakePopup()
 
 end
@@ -29,13 +30,12 @@ function PANEL:Paint(w, h)
     surface.SetDrawColor(color_white)
     surface.DrawTexturedRect(0, 0, w, h)
 
-    PANEL:ShowDestinationList()
 
 end
 
 function PANEL:ShowDestinationList()
     local destinationList = vgui.Create("DScrollPanel", self)
-    destinationList:SetRSize(self.GetWide()*.5, self.GetTall())
+    destinationList:SetRSize(self:GetWide()*.5, self:GetTall())
     destinationList:Dock(LEFT)
     destinationList:RDockMargin(10, 10, 10, 10)
     function destinationList:Paint(w, h)
@@ -43,18 +43,18 @@ function PANEL:ShowDestinationList()
         surface.DrawRect(0, 0, w, h)
     end    
     for _, item in ipairs(transplanage.cfg.locations) do
-        local listItem = vgui.Create("DButton", self)
+        local listItem = vgui.Create("DButton", destinationList)
         //item.name, item.location
-        listItem:SetRSize(self:GetWide(), 30)
+        listItem:SetRSize(destinationList:GetWide(), 30)
         listItem:Dock(TOP)
         listItem:RDockMargin(0, 5, 0, 5)
         listItem:SetText(item.name)
-        listItem:SetTextColor(color_white)
-        function listItem:DoClick()
+        listItem:SetTextColor(color_black)
+        function listItem.DoClick()
             net.Start("transplanage_start_teleportation")
-                net.WriteString(item.name)
+                net.WriteVector(item.location)
             net.SendToServer()
-            PANEL:Close()
+            self:Close()
         end
         -- listItem:SetFont(transplanage.cfg.buttonFont)
         
