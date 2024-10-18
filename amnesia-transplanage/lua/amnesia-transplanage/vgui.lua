@@ -1,4 +1,12 @@
-print("test")
+
+local background = nil
+
+net.Receive("ATransplanagePanelOpen", function()
+    -- if not transplanage.cfg.allowedJobs[team.GetName(ply:Team())] then return end
+
+    background = vgui.Create("ATransplanageTeleportPanel")
+end)
+
 
 local mainPanelBackgroundMat = transplanage.cfg.panelBackgroundMat
 local mainPanelFrameTexture = transplanage.cfg.panelFrameTexture
@@ -15,20 +23,19 @@ function PANEL:Init()
 
 end
 
-function PANEL:Paint()
+function PANEL:Paint(w, h)
 
     surface.SetMaterial(mainPanelBackgroundMat)
+    surface.SetDrawColor(color_white)
     surface.DrawTexturedRect(0, 0, w, h)
 
-    surface.SetMaterial(mainPanelFrameTexture)
-    surface.DrawTexturedRect(0, 0, w, h)
-
+    PANEL:ShowDestinationList()
 
 end
 
 function PANEL:ShowDestinationList()
     local destinationList = vgui.Create("DScrollPanel", self)
-    destinationList:SetRSize(self:GetWide()*.5, self:GetTall())
+    destinationList:SetRSize(self.GetWide()*.5, self.GetTall())
     destinationList:Dock(LEFT)
     destinationList:RDockMargin(10, 10, 10, 10)
     function destinationList:Paint(w, h)
@@ -52,8 +59,10 @@ function PANEL:ShowDestinationList()
         -- listItem:SetFont(transplanage.cfg.buttonFont)
         
 
-        function listItem:Paint()
-
+        function listItem:Paint(w, h)
+            surface.SetDrawColor(color_white)
+            surface.SetMaterial(buttonBackgroundTexture)
+            surface.DrawRect(0, 0, w, h)
         end
     end
 

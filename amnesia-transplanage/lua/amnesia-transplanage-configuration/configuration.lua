@@ -3,8 +3,10 @@ local cfg = transplanage.cfg
 
 cfg.damageTimerDelay = 15
 
+cfg.openCommand = "!transplanage"
+
 cfg.allowedJobs = {
-    ["ahahahahaha"] = true,
+    ["Nouvelle élève"] = true,
 }
 
 cfg.locations = {
