@@ -5,6 +5,8 @@ cfg.destinationListColor = color_transparent
 
 cfg.damageTimerDelay = 15
 
+cfg.buttonFontSize = 8
+
 cfg.openCommand = "!transplanage"
 
 cfg.allowedJobs = {

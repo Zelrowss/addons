@@ -19,6 +19,7 @@ if SERVER then
     AddCSLuaFile("core/client/panel.lua")
     AddCSLuaFile("core/client/surface.lua")
     AddCSLuaFile("core/client/utils.lua")
+    AddCSLuaFile("core/client/fonts.lua")
     
 else
     include("core/shared/shared.lua")
@@ -29,6 +30,7 @@ else
     include("core/client/panel.lua")
     include("core/client/surface.lua")
     include("core/client/utils.lua")
+    include("core/client/fonts.lua")
 end
 
 
